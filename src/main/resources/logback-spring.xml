@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+    <springProperty scope="context" name="applicationname" source="spring.application.name"/>
+    <!-- 声明变量 -->
+    <substitutionProperty name="log.base" value="${LOG_PATH:-/opt/logs/${applicationname}}/${LOG_FILE:-${applicationname}}"/>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>%-4d [%green(%thread)] %highlight(%-5level)  %cyan(%-40.40logger{39}:%L) - %m%n</pattern>
+        </layout>
+    </appender>
+
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${log.base}.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>[%d{yy-MM-dd HH:mm:ss.SSS}] [%cn] [%thread] %-5level %-40.40logger{39} - %msg%n</pattern>
+            <charset>utf-8</charset>
+        </encoder>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="FILE"/>
+    </root>
+    <jmxConfigurator/>
+</configuration>
