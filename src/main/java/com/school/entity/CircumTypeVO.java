@@ -24,4 +24,7 @@ public class CircumTypeVO {
 
     @Column(name = "type")
     private String type;
+
+    @Column(name = "img_url")
+    private String imgUrl;
 }
