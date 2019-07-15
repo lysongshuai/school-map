@@ -30,4 +30,7 @@ public class QuanJingVO {
 
     @Column(name = "center")
     private String center;
+
+    @Column(name = "type")
+    private Integer type;
 }
