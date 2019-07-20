@@ -5,10 +5,8 @@ import lombok.ToString;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @ToString
 @Entity
@@ -31,8 +29,11 @@ public class SchoolInfoVO {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "img_url")
-    private String imgUrl;
+    @Column(name = "center")
+    private String center;
+
+    @Embedded
+    private List<String> images;
 
     @Column(name = "created_time")
     private String createdTime;
