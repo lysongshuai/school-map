@@ -5,33 +5,31 @@ import lombok.ToString;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
-import javax.persistence.*;
-import java.util.List;
-import java.util.Map;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @ToString
 @Entity
 @DynamicInsert
 @DynamicUpdate
 @Data
-@Table(name = "service_info")
-public class ServiceInfoVO {
+@Table(name = "service_info_position")
+public class ServiceInfoPositionVO {
 
     @Id
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "type")
-    private String type;
+    @Column(name = "pid")
+    private Integer pid;
 
     @Column(name = "title")
     private String title;
 
-    @Column(name = "description")
-    private String description;
-
-    @Embedded
-    private List<Map<String,String>> positions;
+    @Column(name = "center")
+    private String center;
 
     @Column(name = "created_time")
     private String createdTime;
