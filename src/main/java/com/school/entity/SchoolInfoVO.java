@@ -17,7 +17,6 @@ import java.util.List;
 public class SchoolInfoVO {
 
     @Id
-    @Column(name = "id")
     private Integer id;
 
     @Column(name = "type")

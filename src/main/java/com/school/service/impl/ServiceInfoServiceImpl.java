@@ -10,6 +10,7 @@ import com.school.util.ApiCode;
 import com.school.util.ApiResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,6 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 @Service
+@Transactional
 public class ServiceInfoServiceImpl implements ServiceInfoService {
 
     @Autowired
@@ -49,6 +51,16 @@ public class ServiceInfoServiceImpl implements ServiceInfoService {
             serviceInfoVO.setPositions(positions);
         });
         return ApiResult.ok(serviceInfoList);
+    }
+
+    @Override
+    public ApiResult update(ServiceInfoVO serviceInfoVO) {
+        if(serviceInfoVO == null){
+            return ApiResult.error(ApiCode.PARAMETER_ERROR);
+        }
+        //更新
+        serviceInfoRepository.update(serviceInfoVO);
+        return ApiResult.ok();
     }
 }
 

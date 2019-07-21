@@ -8,4 +8,6 @@ import java.util.List;
 public interface ServiceInfoService {
 
     public ApiResult<List<ServiceInfoVO>> getByType(String type);
+
+    public ApiResult update(ServiceInfoVO serviceInfoVO);
 }
