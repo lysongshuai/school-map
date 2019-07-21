@@ -43,6 +43,7 @@ public class ServiceInfoServiceImpl implements ServiceInfoService {
             allPosition.stream().forEach(obj ->{
                 if(serviceInfoVO.getId() == obj.getPid()){
                     Map<String,String> map = new HashMap<String,String>();
+                    map.put("id",obj.getId().toString());
                     map.put("title",obj.getTitle());
                     map.put("center",obj.getCenter());
                     positions.add(map);

@@ -31,8 +31,13 @@ public class ServiceInfoPositionServiceImpl implements ServiceInfoPositionServic
         if(serviceInfoPositionVO == null){
             return ApiResult.error(ApiCode.PARAMETER_ERROR);
         }
-        //更新
-        serviceInfoPositionRepository.update(serviceInfoPositionVO);
+        try {
+            //更新
+            serviceInfoPositionRepository.update(serviceInfoPositionVO);
+        }catch (Exception e){
+            ApiResult.error(ApiCode.UNKNOWN_ERROR);
+        }
+
         return ApiResult.ok();
     }
 }
