@@ -59,6 +59,12 @@
       <artifactId>mysql-connector-java</artifactId>
       <version>5.1.21</version>
     </dependency>
+    <!-- 文件上传 -->
+    <dependency>
+      <groupId>commons-fileupload</groupId>
+      <artifactId>commons-fileupload</artifactId>
+      <version>1.4</version>
+    </dependency>
     <!--简化代码-->
     <dependency>
       <groupId>org.projectlombok</groupId>
