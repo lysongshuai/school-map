@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Implementation-Title: school-map
+Implementation-Version: 1.0-SNAPSHOT
+Archiver-Version: Plexus Archiver
+Built-By: Administrator
+Implementation-Vendor-Id: com.plan
+Created-By: Apache Maven 3.6.1
+Build-Jdk: 1.8.0_40
+Implementation-URL: http://projects.spring.io/spring-boot/school-map/
+Implementation-Vendor: Pivotal Software, Inc.
+

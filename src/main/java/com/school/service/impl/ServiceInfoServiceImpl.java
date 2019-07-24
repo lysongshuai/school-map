@@ -8,6 +8,8 @@ import com.school.repository.ServiceInfoRepository;
 import com.school.service.ServiceInfoService;
 import com.school.util.ApiCode;
 import com.school.util.ApiResult;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,6 +22,8 @@ import java.util.Map;
 @Service
 @Transactional
 public class ServiceInfoServiceImpl implements ServiceInfoService {
+
+    Logger logger = LoggerFactory.getLogger(ServiceInfoServiceImpl.class);
 
     @Autowired
     ServiceInfoRepository serviceInfoRepository;
@@ -59,8 +63,13 @@ public class ServiceInfoServiceImpl implements ServiceInfoService {
         if(serviceInfoVO == null){
             return ApiResult.error(ApiCode.PARAMETER_ERROR);
         }
-        //更新
-        serviceInfoRepository.update(serviceInfoVO);
+        try{
+            //更新
+            serviceInfoRepository.update(serviceInfoVO);
+        }catch (Exception e){
+            logger.error(ServiceInfoServiceImpl.class.getName()+"  Error:{}",e.getMessage());
+            ApiResult.error(ApiCode.UNKNOWN_ERROR);
+        }
         return ApiResult.ok();
     }
 }
