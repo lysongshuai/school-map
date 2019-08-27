@@ -64,12 +64,12 @@ public class FileUploadController {
             return ApiResult.error(ApiCode.FILE_TO_BIG) ;
         }
 
-        String ossName = upload(multipartFile,suffix, size);
-        if (ossName == null) {// 上传失败
+        String filePath = upload(multipartFile,suffix, size);
+        if (filePath == null) {// 上传失败
             return ApiResult.error(ApiCode.FILE_UPLOAD_ERROR) ;
         }
         
-        return ApiResult.ok("/"+ossName);
+        return ApiResult.ok(filePath);
     }
 
     private static final int MAX_LENGTH = 10 * 1024 * 1024 ;
