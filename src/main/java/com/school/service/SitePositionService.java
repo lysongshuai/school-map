@@ -7,7 +7,13 @@ import java.util.List;
 
 public interface SitePositionService {
 
-    public ApiResult<SitePositionVO> getByName(String name);
+    public ApiResult<SitePositionVO> getByName(String name) throws Exception;
 
-    public ApiResult<List<SitePositionVO>> getAll();
+    public ApiResult<List<SitePositionVO>> getAll() throws Exception;
+
+    public ApiResult add(SitePositionVO sitePositionVO) throws Exception;
+
+    public ApiResult update(SitePositionVO sitePositionVO) throws Exception;
+
+    public ApiResult delete(Integer id) throws Exception;
 }

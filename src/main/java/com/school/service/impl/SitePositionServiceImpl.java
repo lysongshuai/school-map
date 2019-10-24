@@ -39,4 +39,35 @@ public class SitePositionServiceImpl implements SitePositionService {
         }
         return ApiResult.ok(resultData);
     }
+
+    public ApiResult add(SitePositionVO sitePositionVO){
+        try {
+            sitePositionRepository.save(sitePositionVO);
+        } catch (Exception e) {
+             return ApiResult.error(ApiCode.UNKNOWN_ERROR);
+        }
+        return ApiResult.ok();
+    }
+
+    public ApiResult update(SitePositionVO sitePositionVO){
+        try {
+            sitePositionRepository.update(sitePositionVO);
+        } catch (Exception e) {
+            return ApiResult.error(ApiCode.UNKNOWN_ERROR);
+        }
+        return ApiResult.ok();
+    }
+
+    public ApiResult delete(Integer id){
+        try {
+            sitePositionRepository.delete(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ApiResult.error(ApiCode.UNKNOWN_ERROR);
+        }
+        return ApiResult.ok();
+    }
+
+
+
 }

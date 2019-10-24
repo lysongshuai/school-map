@@ -19,7 +19,7 @@ import org.springframework.data.repository.NoRepositoryBean;
  * @version 2016年7月27日
  */
 @NoRepositoryBean
-public interface BasicRepository<E> extends ProjectJpaRepository<E,String> {
+public interface BasicRepository<E> extends ProjectJpaRepository<E,Integer> {
 
 
 

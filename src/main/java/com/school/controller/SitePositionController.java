@@ -6,10 +6,7 @@ import com.school.entity.SitePositionVO;
 import com.school.service.SitePositionService;
 import com.school.util.ApiResult;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,13 +20,28 @@ public class SitePositionController {
     private SitePositionService sitePositionService;
 
     @GetMapping(value = "/getByName")
-    public ApiResult<SitePositionVO> getByName(String name){
+    public ApiResult<SitePositionVO> getByName(String name) throws Exception{
         return sitePositionService.getByName(name);
     }
 
     @GetMapping(value = "/getAll")
-    public ApiResult<List<SitePositionVO>> getAll(){
+    public ApiResult<List<SitePositionVO>> getAll() throws Exception{
         return sitePositionService.getAll();
+    }
+
+    @PostMapping(value = "/add")
+    public ApiResult add(@RequestBody SitePositionVO sitePositionVO) throws Exception{
+        return sitePositionService.add(sitePositionVO);
+    }
+
+    @PostMapping(value = "/update")
+    public ApiResult update(@RequestBody SitePositionVO sitePositionVO) throws Exception{
+        return sitePositionService.update(sitePositionVO);
+    }
+
+    @PostMapping(value = "/delete")
+    public ApiResult delete(Integer id) throws Exception{
+        return sitePositionService.delete(id);
     }
 
 }
