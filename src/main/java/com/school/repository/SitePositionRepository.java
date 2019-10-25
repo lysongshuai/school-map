@@ -13,6 +13,6 @@ public interface SitePositionRepository extends BasicRepository<SitePositionVO> 
 
     public SitePositionVO getFirstByNameLike(@Param("name") String name);
 
-    @Query(value = "select * from site_position",nativeQuery = true)
+    @Query(value = "select * from site_position order by id desc",nativeQuery = true)
     public List<SitePositionVO> getAll();
 }
